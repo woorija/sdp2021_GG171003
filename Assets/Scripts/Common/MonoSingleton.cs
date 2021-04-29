@@ -29,7 +29,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 		}
 	}
 
-	public void Start()
+	public virtual void Start()
 	{
 		T[] allInstances = FindObjectsOfType(typeof(T)) as T[];
 		
