@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum eKeycodeType
 {
-    Skill1,
-    Skill2,
-    Skill3,
-    Skill4,
+    Attack,
+    WeaponChange1,
+    WeaponChange2,
+    WeaponChange3,
     Spell1,
     Spell2,
     Item1,
@@ -21,7 +21,7 @@ public enum eKeycodeType
 
 public class Player : MonoBehaviour
 {
-    Command Com_skill1, Com_skill2, Com_skill3, Com_skill4, Com_spell1, Com_spell2, Com_item1, Com_item2, Com_item3, Com_item4, Com_item5, Com_item6, Com_accessory;
+    Command Com_Attack, Com_WeaponChange1, Com_WeaponChange2, Com_WeaponChange3, Com_spell1, Com_spell2, Com_item1, Com_item2, Com_item3, Com_item4, Com_item5, Com_item6, Com_accessory;
     private void Start()
     {
         Set_command();
@@ -41,10 +41,11 @@ public class Player : MonoBehaviour
 
     void Set_command()
     {
-        Com_skill1 = new Skill1();
-        Com_skill2 = new Skill2();
-        Com_skill3 = new Skill3();
-        Com_skill4 = new Skill4();
+        Com_Attack = new Attack();
+        Com_WeaponChange1 = new WeaponChange1();
+        Com_WeaponChange2 = new WeaponChange2();
+        Com_WeaponChange3 = new WeaponChange3();
+
         Com_spell1 = new Spell1();
         Com_spell2 = new Spell2();
         Com_item1 = new Item1();
@@ -58,10 +59,10 @@ public class Player : MonoBehaviour
 
     Command Get_command()
     {
-        if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Skill1)) return Com_skill1;
-        else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Skill2)) return Com_skill2;
-        else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Skill3)) return Com_skill3;
-        else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Skill4)) return Com_skill4;
+        if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Attack)) return Com_Attack;
+        else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.WeaponChange1)) return Com_WeaponChange1;
+        else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.WeaponChange2)) return Com_WeaponChange2;
+        else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.WeaponChange3)) return Com_WeaponChange3;
         else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Spell1)) return Com_spell1;
         else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Spell2)) return Com_spell2;
         else if (CustomInputManager.Instance.GetKeyDown((int)eKeycodeType.Item1)) return Com_item1;

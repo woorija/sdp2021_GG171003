@@ -7,35 +7,35 @@ public abstract class Command
     public abstract void execute();
 }
 
-public class Skill1 : Command
+public class Attack : Command
 {
     public override void execute()
     {
-        Debug.Log("스킬 1 사용");
+        WaeponManager.Instance.Fire();
     }
 }
 
-public class Skill2 : Command
+public class WeaponChange1 : Command
 {
     public override void execute()
     {
-        Debug.Log("스킬 2 사용");
+        WaeponManager.Instance.ChangeBullet();
     }
 }
 
-public class Skill3 : Command
+public class WeaponChange2 : Command
 {
     public override void execute()
     {
-        Debug.Log("스킬 3 사용");
+        WaeponManager.Instance.ChangeMissile();
     }
 }
 
-public class Skill4 : Command
+public class WeaponChange3 : Command
 {
     public override void execute()
     {
-        Debug.Log("스킬 4 사용");
+        WaeponManager.Instance.ChangeArrow();
     }
 }
 
