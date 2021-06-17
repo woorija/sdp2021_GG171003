@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Monster
   - Weapon
+  - BossBullet
+  - MonsterWall
   layers:
   - Default
   - TransparentFX

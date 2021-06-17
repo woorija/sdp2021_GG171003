@@ -18,10 +18,14 @@ public class Player : MonoBehaviour
 {
     Command Com_Attack, Com_WeaponChange1, Com_WeaponChange2, Com_WeaponChange3;
     Rigidbody _rigid;
+
+    MonsterHP HP;
     private void Start()
     {
         Set_command();
         _rigid = GetComponent<Rigidbody>();
+        HP = GetComponent<MonsterHP>();
+        HP.HPInit();
     }
 
     private void Update()
@@ -33,6 +37,21 @@ public class Player : MonoBehaviour
             if (command != null)
             {
                 command.execute();
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BossBullet"))
+        {
+            if (HP.hp > 0)
+            {
+                ObjectPoolManager.Instance.DeleteObj((int)PoolType.BossBullet, other.gameObject);
+                if (HP.Hit(1))
+                {
+                    GameManager.Instance.GameOver();
+                }
             }
         }
     }

@@ -2,28 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterB : MonoBehaviour
+public class MonsterB : Monster
 {
-    MonsterBFactory factory;
-    IMonsterMovement Move;
-    private void Start()
+    protected override void Start()
     {
         Move = GetComponent<mMoveAdaptB>();
-        Move.MoveStart();
+        base.Start();
     }
-
-    public void SetFactory(MonsterBFactory _fac)
+    protected override void OnDisable()
     {
-        factory = _fac;
+        base.OnDisable();
     }
 
-    void Die()
+    protected override void OnEnable()
     {
-        factory.DeleteMonster(gameObject);
+        base.OnEnable();
     }
 
-    void OnNotity()
+    protected override void Die()
+    {
+        ObjectPoolManager.Instance.DeleteObj((int)PoolType.MonsterB, gameObject);
+    }
+
+    protected override void OnNotity()
     {
         Die();
+    }
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
     }
 }

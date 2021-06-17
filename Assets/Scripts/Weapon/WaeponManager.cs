@@ -11,12 +11,6 @@ public enum WeaponType
 
 public class WaeponManager : MonoBehaviour
 {
-    public GameObject _arrow;
-    public GameObject _bullet;
-    public GameObject _missile;
-
-    GameObject myWeapon;
-
     private IWeapon weapon;
 
     float delay;
@@ -37,25 +31,21 @@ public class WaeponManager : MonoBehaviour
         {
             case WeaponType.Bullet:
                 weapon = gameObject.AddComponent<Bullet>();
-                myWeapon = _bullet;
                 delay = 0.1f;
                 break;
 
             case WeaponType.Missile:
                 weapon = gameObject.AddComponent<Missile>();
-                myWeapon = _missile;
                 delay = 0.5f;
                 break;
 
             case WeaponType.Arrow:
                 weapon = gameObject.AddComponent<Arrow>();
-                myWeapon = _arrow;
                 delay = 0.3f;
                 break;
 
             default:
                 weapon = gameObject.AddComponent<Bullet>();
-                myWeapon = _bullet;
                 delay = 0.1f;
                 break;
         }
@@ -91,7 +81,7 @@ public class WaeponManager : MonoBehaviour
     {
         if (cur_delay < 0)
         {
-            weapon.Shoot(myWeapon);
+            weapon.Shoot();
             cur_delay = delay;
         }
     }

@@ -5,5 +5,4 @@ using UnityEngine;
 public abstract class Factory : MonoBehaviour
 {
     public abstract GameObject MakeMonster();
-    public abstract void DeleteMonster(GameObject _obj);
 }

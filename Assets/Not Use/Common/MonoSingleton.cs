@@ -23,7 +23,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 					_instance = newSingleton.AddComponent<T>();
 					newSingleton.name = typeof(T).ToString();
 				}
-				DontDestroyOnLoad(_instance);
+				//DontDestroyOnLoad(_instance);
 			}
 			return _instance;
 		}
@@ -40,12 +40,12 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 				if(instanceToCheck != Instance)
 				{
 					// Destroy it now
-					Destroy(instanceToCheck.gameObject);
+					//Destroy(instanceToCheck.gameObject);
 				}
 			}
 		}
 
-		DontDestroyOnLoad((T) FindObjectOfType(typeof(T)));
+		//DontDestroyOnLoad((T) FindObjectOfType(typeof(T)));
 	}
 
 	void OnApplicationQuit()

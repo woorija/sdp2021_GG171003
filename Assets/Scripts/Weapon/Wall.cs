@@ -8,7 +8,22 @@ public class Wall : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            Destroy(other.gameObject);
+            switch (other.GetComponent<BulletType>().Get_Type())
+            {
+                case (int)PoolType.Bullet:
+                    ObjectPoolManager.Instance.DeleteObj((int)PoolType.Bullet, other.gameObject);
+                    break;
+                case (int)PoolType.Missile:
+                    ObjectPoolManager.Instance.DeleteObj((int)PoolType.Missile, other.gameObject);
+                    break;
+                case (int)PoolType.Arrow:
+                    ObjectPoolManager.Instance.DeleteObj((int)PoolType.Arrow, other.gameObject);
+                    break;
+            }
+        }
+        else if (other.CompareTag("BossBullet"))
+        {
+            ObjectPoolManager.Instance.DeleteObj((int)PoolType.BossBullet, other.gameObject);
         }
     }
 }

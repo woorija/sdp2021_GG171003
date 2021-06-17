@@ -16,6 +16,9 @@ public class FactoryMethod : MonoBehaviour
             case 1:
                 factory = GetComponent<MonsterBFactory>();
                 break;
+            case 2:
+                factory = GetComponent<MonsterCFactory>();
+                break;
         }
         return factory;
     }
